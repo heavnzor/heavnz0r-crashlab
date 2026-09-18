@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="460" viewBox="0 0 1280 460" role="img" aria-labelledby="title desc">
+  <title id="title">heavnz0r'CrashLab — Test the consequences.</title>
+  <desc id="desc">A racing-terminal fault laboratory with two retry paths: duplicate effects in red, one idempotent effect in green.</desc>
+  <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".045"/></pattern></defs>
+  <rect width="1280" height="460" rx="20" fill="#0b0f14"/><rect width="1280" height="460" rx="20" fill="url(#grid)"/>
+  <rect x="48" y="42" width="7" height="18" fill="#ff786b"/><text x="68" y="56" fill="#f0f2eb" font-family="monospace" font-size="15" letter-spacing="3">HEAVNZ0R / ENGINEERING SYSTEMS</text>
+  <text x="1230" y="56" text-anchor="end" fill="#9ba6ad" font-family="monospace" font-size="13">02 — AGENT FAULT LAB</text>
+  <text x="48" y="214" fill="#f0f2eb" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="100" letter-spacing="-6">CRASHLAB<tspan fill="#ff786b">.</tspan></text>
+  <text x="55" y="272" fill="#f0f2eb" font-family="Arial,Helvetica,sans-serif" font-size="27">Test the consequences.</text>
+  <text x="55" y="310" fill="#9ba6ad" font-family="monospace" font-size="15">A plausible reply can still leave the wrong world.</text>
+  <g fill="none" stroke-width="2"><path d="M836 225h70v-65h85m-85 65v75h85" stroke="#9ba6ad"/><path d="M1018 160h65v-24h88m-88 24v31h88" stroke="#ff786b"/><path d="M1018 300h150" stroke="#c8ff4d"/></g>
+  <circle cx="820" cy="225" r="16" fill="#263136" stroke="#9ba6ad"/><path d="m814 219 12 12m0-12-12 12" stroke="#ff786b" stroke-width="2"/>
+  <g font-family="monospace" font-size="12"><text x="780" y="262" fill="#9ba6ad">TIMEOUT</text><text x="930" y="137" fill="#ff786b">RETRY</text><text x="932" y="278" fill="#c8ff4d">RETRY + KEY</text></g>
+  <rect x="986" y="149" width="32" height="22" rx="4" fill="#ff786b"/><rect x="986" y="289" width="32" height="22" rx="4" fill="#c8ff4d"/>
+  <rect x="1170" y="124" width="25" height="25" rx="4" fill="#ff786b"/><rect x="1170" y="179" width="25" height="25" rx="4" fill="#ff786b"/><rect x="1170" y="287" width="25" height="25" rx="4" fill="#c8ff4d"/>
+  <path d="M48 381h1184" stroke="#283138"/><text x="55" y="417" fill="#ff786b" font-family="monospace" font-size="13" letter-spacing="1">FAULTS IN / EVIDENCE OUT</text><text x="1230" y="417" text-anchor="end" fill="#9ba6ad" font-family="monospace" font-size="13">MCP / EFFECT LEDGERS / DETERMINISTIC REPLAY</text>
+</svg>
