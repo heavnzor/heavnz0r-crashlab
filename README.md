@@ -1,3 +1,5 @@
+<p align="center"><strong>English</strong> · <a href="README.fr.md">Français</a></p>
+
 <p align="center"><img src="assets/hero.svg" alt="heavnz0r'CrashLab — Test the consequences." width="100%"></p>
 <p align="center">
   <a href="https://github.com/heavnzor/heavnz0r-crashlab/actions/workflows/ci.yml"><img src="https://github.com/heavnzor/heavnz0r-crashlab/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
