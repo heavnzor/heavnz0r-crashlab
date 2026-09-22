@@ -1,6 +1,6 @@
 {
   "name": "@heavnzor/crashlab",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A deterministic fault laboratory for agent tool calls and their side effects.",
   "type": "module",
   "license": "MIT",

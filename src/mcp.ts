@@ -6,12 +6,28 @@ import { writeReport } from "./report.js";
 
 export async function serve(input: unknown, output?: string) {
   const world = new World(input);
-  const server = new Server({ name: "heavnz0r-crashlab", version: "0.1.0" }, { capabilities: { tools: {} } });
+  const server = new Server({ name: "heavnz0r-crashlab", version: "0.1.1" }, { capabilities: { tools: {} } });
+  // Calls consume the simulation budget and append to its journal, even when
+  // the business effect is deduplicated. Persisted snapshots overwrite files.
+  const writesReports = output ? true : false;
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
     tools: [
-      ...world.scenario.tools.map(({ name, description, inputSchema }) => ({ name, description, inputSchema })),
-      { name: "crashlab_context", description: "Read the objective and whether this simulated action is approved.", inputSchema: { type: "object", properties: {}, additionalProperties: false } },
-      { name: "crashlab_report", description: "Finish this simulation and return the effect ledger and invariant verdict. No further effect calls are accepted.", inputSchema: { type: "object", properties: {}, additionalProperties: false } },
+      ...world.scenario.tools.map(({ name, description, inputSchema }) => ({
+        name, description, inputSchema,
+        annotations: { readOnlyHint: false, destructiveHint: writesReports, idempotentHint: false, openWorldHint: false },
+      })),
+      {
+        name: "crashlab_context",
+        description: "Return the objective and approval state, recording this call in the simulation journal and consuming its tool-call budget.",
+        inputSchema: { type: "object", properties: {}, additionalProperties: false },
+        annotations: { readOnlyHint: false, destructiveHint: writesReports, idempotentHint: false, openWorldHint: false },
+      },
+      {
+        name: "crashlab_report",
+        description: "Finish this simulation and return the effect ledger and invariant verdict. No further context or effect calls are accepted. Repeated reports preserve the same logical state.",
+        inputSchema: { type: "object", properties: {}, additionalProperties: false },
+        annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: true, openWorldHint: false },
+      },
     ],
   }));
   server.setRequestHandler(CallToolRequestSchema, async (request) => {

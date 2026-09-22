@@ -24,6 +24,25 @@ The included naive/resilient controllers are deliberately small baseline fixture
 
 Canonical JSON uses sorted object keys and a scenario SHA-256. Replay compares tool responses, events, effects and violations, including failure outcomes. It replays actions, not model sampling. A changed controller needs a fresh run; a changed real API needs a simulator contract update.
 
+## MCP effect annotations
+
+Every advertised tool, including scenario-defined names, carries all four Boolean
+MCP hints. They describe the simulator's behavior rather than the business tool's name.
+
+- Business calls and `crashlab_context` are not read-only or idempotent: they append
+  journal entries and consume the call budget. Deduplicating a business effect does
+  not deduplicate those operational effects.
+- In memory-only mode these updates are additive. With `--out`, those same calls
+  overwrite the JSON, HTML and JUnit snapshots, so `destructiveHint` becomes `true`.
+- `crashlab_report` is a terminal operation and advertises `destructiveHint: true`:
+  it closes the simulation to subsequent context and business calls. Repeating it
+  does not add calls, events or effects, so `idempotentHint` is `true`. With `--out`,
+  files are rewritten with the same logical content; file modification times may change.
+- All tools use `openWorldHint: false`: they operate on the configured simulated
+  world and report destination, not production APIs.
+
+Hints are descriptive metadata, not a permission or sandbox mechanism.
+
 ## v0.1 limits
 
 - One in-memory world per process; restart a server to start a new simulation.
